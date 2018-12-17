@@ -11,7 +11,19 @@ package ihm;
  */
 public class IhmConstantes {
     
-    public static String BTN_PROGRAMMEUR = "Programmeur";
+    public static String MENU_PROGRAMMEUR = "Programmeur";
     
-    public static String BTN_ACTION = "Action";
+    public static String MENU_ACTION = "Action";
+    
+    public static  String SMENU_AFFICHER = "Afficher";
+    
+    public static String SMENU_MODIFIER = "Modifier";
+    
+    public static String SMENU_SUPPRIMER = "Supprimer";
+    
+    public static String SMENU_AJOUTER = "Ajouter";
+    
+    public static String SMENU_QUITTER = "Quitter";
+    
+    public static String SMENU_AFFICHER_TOUS = "Tous";
 }

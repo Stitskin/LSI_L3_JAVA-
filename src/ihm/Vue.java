@@ -19,6 +19,7 @@ import data.DataTransac;
 import data.ProgrammeurBean;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -33,6 +34,15 @@ public class Vue extends JFrame implements ActionListener {
     private JMenuBar menuBar;
     private JMenu menuProgrammeur;
     private JMenu menuAction;
+    private JMenu sMenuAfficher;
+    private JMenuItem ssMenuAfficherTous;
+    private JMenuItem sMenuModifier;
+    private JMenuItem sMenuSupprimer;
+    private JMenuItem sMenuAjouter;
+    private JMenuItem sMenuQuitter;
+    private JMenuItem sMenuAfficherTous;
+    
+    
     private JLabel labelNom;
     private JTextField champNom;
     private JTextArea zoneAffichageProgrammeurs;
@@ -44,29 +54,39 @@ public class Vue extends JFrame implements ActionListener {
 
     public void init() {
         pane = new JPanel(); // Créantion d'un panel pour gérer les widgets
-        menuProgrammeur = new JMenu(IhmConstantes.)
         
-        btnProgrammeur = new JButton(IhmConstantes.BTN_PROGRAMMEUR);
-        btnAction = new JButton("Rechercher");
-        labelNom = new JLabel("Nom");
-        champNom = new JTextField();
-        champNom.setColumns(10);
+        menuBar = new JMenuBar();
+        menuProgrammeur = new JMenu(IhmConstantes.MENU_PROGRAMMEUR);
+        menuAction = new JMenu(IhmConstantes.MENU_ACTION);
+        
+        sMenuAfficher = new JMenu(IhmConstantes.SMENU_AFFICHER);
+        sMenuAjouter = new JMenuItem(IhmConstantes.SMENU_AJOUTER);
+        sMenuModifier = new JMenuItem(IhmConstantes.SMENU_MODIFIER);
+        sMenuSupprimer = new JMenuItem(IhmConstantes.SMENU_SUPPRIMER);
+        sMenuQuitter = new JMenuItem(IhmConstantes.SMENU_QUITTER);
+        sMenuAfficherTous = new JMenuItem(IhmConstantes.SMENU_AFFICHER_TOUS);
+        
+        menuProgrammeur.add(sMenuAfficher);
+        sMenuAfficher.add(sMenuAfficherTous);
+        
+        menuProgrammeur.add(sMenuModifier);
+        menuProgrammeur.add(sMenuSupprimer);
+        menuProgrammeur.add(sMenuAjouter);
+        
+        menuAction.add(sMenuQuitter);
+        
+        menuBar.add(menuProgrammeur);
+        menuBar.add(menuAction);
+        
+        pane.add(menuBar);
+        
         zoneAffichageProgrammeurs = new JTextArea();
-
-        /** Tous les widgets sont placés sur le panel
-         * Et après le panel est "posé" sur notre frame de base
-         */        
-        pane.add(btnAfficherTous);
-        pane.add(labelNom);
-        pane.add(champNom);
-        pane.add(btnRechercher);
-
         zoneAffichageProgrammeurs = new JTextArea(10, 50);
         scroll = new JScrollPane(zoneAffichageProgrammeurs);
         pane.add(scroll);
 
-        btnAfficherTous.addActionListener(this);
-        btnRechercher.addActionListener(this);
+       // btnAfficherTous.addActionListener(this);
+       // btnRechercher.addActionListener(this);
 
         /**
          * Par défaut, notre frame n'est pas visible
