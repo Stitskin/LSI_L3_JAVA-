@@ -81,7 +81,7 @@ public class Vue extends JFrame implements ActionListener {
         pane.add(menuBar);
         
         zoneAffichageProgrammeurs = new JTextArea();
-        zoneAffichageProgrammeurs = new JTextArea(10, 50);
+        zoneAffichageProgrammeurs = new JTextArea(50, 80);
         scroll = new JScrollPane(zoneAffichageProgrammeurs);
         pane.add(scroll);
 
@@ -95,14 +95,30 @@ public class Vue extends JFrame implements ActionListener {
         this.setVisible(true);
         this.setTitle("TP 3");
         setDefaultCloseOperation(EXIT_ON_CLOSE); // Fermeture fenêtre = arrêt de l'application 
-        setBounds(10, 10, 600, 300);
+        setBounds(10, 10, 1000, 1000);
 
         this.add(pane); // Ajout du panel à notre frame de base
+        
+        afficherProg();
     }
-
+    
+    private void afficherProg(){
+        sMenuAfficherTous.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                System.out.println("okkkkkkk");
+                dt = new DataTransac();
+                contenuTextArea = dt.afficherProgrammeurs();
+                //System.out.println(contenuTextArea);
+                zoneAffichageProgrammeurs.setText(contenuTextArea);
+                dt.fermerRessources();
+            }
+        });
+    }
     @Override
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == btnAfficherTous) {
+        
+        
+        /*if (event.getSource() == sMenuAfficherTous) {
             dt = new DataTransac();
             contenuTextArea = dt.afficherProgrammeurs();
             zoneAffichageProgrammeurs.setText(contenuTextArea);
@@ -118,7 +134,8 @@ public class Vue extends JFrame implements ActionListener {
             }
 
             dt.fermerRessources();
-        }
+        }*/
     }
+    
 
 }
